@@ -1,0 +1,81 @@
+<div class="data-form">
+  <form action="/events/create" method="POST">
+    <h2>Create a new event:</h2>
+    <label for="inputTitle">Title</label>
+    <input
+      type="text"
+      name="title"
+      id="inputTitle"
+      placeholder="Title"
+      autofocus
+      required
+    />
+    <label for="inputDescription">Description</label>
+    <input
+      type="text"
+      name="description"
+      id="inputDescription"
+      placeholder="Description"
+      required
+    />
+    <label for="inputLocation">Location</label>
+    <input
+      type="text"
+      name="location"
+      id="inputLocation"
+      placeholder="Location"
+      required
+    />
+    <label for="inputStartDate">Start Date</label>
+    <input
+      type="Date"
+      name="startDate"
+      id="inputStartDate"
+      placeholder="Start Date"
+      required
+    />
+    <label for="inputEndDate">End Date</label>
+    <input
+      type="Date"
+      name="endDate"
+      id="inputEndDate"
+      placeholder="End Date"
+      required
+    />
+    <label for="inputIsOnline">Is Online:</label>
+    <input
+      type="radio"
+      name="isOnline"
+      id="inputIsOnline"
+      value="true"
+      required
+    />
+    <label for="inputIsOnline">True</label>
+    <input
+      type="radio"
+      name="isOnline"
+      id="inputIsOnline"
+      value="false"
+      required
+    />
+    <label for="inputIsOnline">False</label>
+    <label for="inputRegistrationLink">Registration Link</label>
+    <input
+      type="text"
+      name="registrationLink"
+      id="inputRegistrationLink"
+      placeholder="Link"
+      required
+    />
+    <% if (currentUser) { %>
+    <input
+      type="hidden"
+      name="organizer"
+      id="inputOrganizer"
+      value="<%= currentUser._id %>"
+      required
+    />
+    <%}%>
+    <button type="submit">Submit</button>
+  </form>
+</div>

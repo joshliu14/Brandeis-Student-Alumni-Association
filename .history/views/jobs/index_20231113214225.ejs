@@ -1,0 +1,51 @@
+<h2>Jobs Table</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Graduation Year</th>
+      <th>Major</th>
+      <th>Job</th>
+      <th>Company</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Country</th>
+      <th>Zip Code</th>
+      <th>Bio</th>
+      <th>Interests</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% jobs.forEach(job => { %>
+    <tr>
+      <td>
+        <a href="<%= `/jobs/${job._id}` %>"> <%= job.name %> </a>
+      </td>
+      <td><%= job.email %></td>
+      <td><%= job.role %></td>
+      <td><%= job.graduationYear %></td>
+      <td><%= job.major %></td>
+      <td><%= job.job %></td>
+      <td><%= job.company %></td>
+      <td><%= job.city %></td>
+      <td><%= job.state %></td>
+      <td><%= job.country %></td>
+      <td><%= job.zipCode %></td>
+      <td><%= job.bio %></td>
+      <td><%= job.interests %></td>
+      <td>
+        <a href="<%=`/jobs/${job._id}/edit` %>"> Edit </a>
+      </td>
+      <td>
+        <a
+          href="<%= `jobs/${job._id}/delete?_method=DELETE` %>"
+          onclick="return confirm('Are you sure you want to delete this record?')"
+          >Delete</a
+        >
+      </td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>

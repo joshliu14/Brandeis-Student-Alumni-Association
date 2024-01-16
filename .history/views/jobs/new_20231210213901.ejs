@@ -1,0 +1,117 @@
+<div class="data-form">
+  <form action="/jobs/create" method="POST">
+    <h2>Create a new job:</h2>
+    <label for="inputTitle">Title</label>
+    <input
+      type="text"
+      name="title"
+      id="inputTitle"
+      placeholder="Title"
+      autofocus
+      required
+    />
+    <label for="inputCompany">Company</label>
+    <input
+      type="text"
+      name="company"
+      id="inputCompany"
+      placeholder="Company"
+      required
+    />
+    <label for="inputLocation">Location</label>
+    <input
+      type="text"
+      name="location"
+      id="inputLocation"
+      placeholder="Location"
+      required
+    />
+    <label for="inputDescription">Description</label>
+    <input
+      type="text"
+      name="description"
+      id="inputDescription"
+      placeholder="Description"
+      required
+    />
+    <label for="inputRequirements">Requirements</label>
+    <input
+      type="text"
+      name="requirements"
+      id="inputRequirements"
+      placeholder="Requirements"
+      required
+    />
+    <label for="inputSalary">Salary</label>
+    <input
+      type="Number"
+      name="salary"
+      id="inputSalary"
+      placeholder="Salary"
+      required
+    />
+    <label for="inputContactEmail">Contact Email</label>
+    <input
+      type="email"
+      name="contactEmail"
+      id="inputContactEmail"
+      placeholder="Contact Email"
+      required
+    />
+    <label for="inputContactPhone">Contact Phone</label>
+    <input
+      type="text"
+      name="contactPhone"
+      id="inputContactPhone"
+      placeholder="Contact Phone"
+      required
+    />
+    <label for="inputPostDate">Post Date</label>
+    <input
+      type="Date"
+      name="postDate"
+      id="inputPostDate"
+      placeholder="Post Date"
+      required
+    />
+    <label for="inputDeadlineDate">Deadline Date</label>
+    <input
+      type="Date"
+      name="deadlineDate"
+      id="inputDeadlineDate"
+      placeholder="Deadline Date"
+      required
+    />
+    <label for="inputIsActive">Is Active</label>
+    <div class="radio">
+    <label for="inputIsActive">True:</label>
+    <input
+      type="radio"
+      name="isActive"
+      id="inputIsActive"
+      value="true"
+      required
+    />
+    <label for="inputIsActive">False:</label>
+    <input
+      type="radio"
+      name="isActive"
+      id="inputIsActive"
+      value="false"
+      required
+    />
+    </div>
+    <input
+      type="hidden"
+      name="organizer"
+      id="inputOrganizer"
+      value="<%= currentUser._id %>"
+      required
+    />
+    <button type="submit">Submit</button>
+  </form>
+</div>
+</br>
+</br>
+</br>
+</br>

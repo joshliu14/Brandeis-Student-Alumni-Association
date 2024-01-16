@@ -1,0 +1,68 @@
+<h1>Job Data for <%= job.fullName %></h1>
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <td><%= job.name %></td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td><%= job.email %></td>
+  </tr>
+  <tr>
+    <th>Role</th>
+    <td><%= job.role %></td>
+  </tr>
+  <tr>
+    <th>Graduation Year</th>
+    <td><%= job.graduationYear %></td>
+  </tr>
+  <tr>
+    <th>Major</th>
+    <td><%= job.major %></td>
+  </tr>
+  <tr>
+    <th>Job</th>
+    <td><%= job.job %></td>
+  </tr>
+  <tr>
+    <th>Company</th>
+    <td><%= job.company %></td>
+  </tr>
+  <tr>
+    <th>City</th>
+    <td><%= job.city %></td>
+  </tr>
+  <tr>
+    <th>State</th>
+    <td><%= job.state %></td>
+  </tr>
+  <tr>
+    <th>Country</th>
+    <td><%= job.country %></td>
+  </tr>
+  <tr>
+    <th>Zip Code</th>
+    <td><%= job.zipCode %></td>
+  </tr>
+  <tr>
+    <th>Bio</th>
+    <td><%= job.bio %></td>
+  </tr>
+  <tr>
+    <th>Interests</th>
+    <td><%= job.interests %></td>
+  </tr>
+</table>
+<div>
+  <a href="/jobs">View all jobs</a>
+</div>
+<div>
+  <a href="<%=`/jobs/${job._id}/edit`%>">Edit Job Details</a>
+</div>
+<div>
+  <a
+    href="<%= `/jobs/${job._id}/delete?_method=DELETE` %>"
+    onclick="return confirm('Are you sure you want to delete this record?')"
+    >Delete</a
+  >
+</div>

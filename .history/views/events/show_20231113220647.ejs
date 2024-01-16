@@ -1,0 +1,68 @@
+<h1>Event Data for <%= event.title %></h1>
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <td><%= event.name %></td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td><%= event.email %></td>
+  </tr>
+  <tr>
+    <th>Role</th>
+    <td><%= event.role %></td>
+  </tr>
+  <tr>
+    <th>Graduation Year</th>
+    <td><%= event.graduationYear %></td>
+  </tr>
+  <tr>
+    <th>Major</th>
+    <td><%= event.major %></td>
+  </tr>
+  <tr>
+    <th>Job</th>
+    <td><%= event.job %></td>
+  </tr>
+  <tr>
+    <th>Company</th>
+    <td><%= event.company %></td>
+  </tr>
+  <tr>
+    <th>City</th>
+    <td><%= event.city %></td>
+  </tr>
+  <tr>
+    <th>State</th>
+    <td><%= event.state %></td>
+  </tr>
+  <tr>
+    <th>Country</th>
+    <td><%= event.country %></td>
+  </tr>
+  <tr>
+    <th>Zip Code</th>
+    <td><%= event.zipCode %></td>
+  </tr>
+  <tr>
+    <th>Bio</th>
+    <td><%= event.bio %></td>
+  </tr>
+  <tr>
+    <th>Interests</th>
+    <td><%= event.interests %></td>
+  </tr>
+</table>
+<div>
+  <a href="/events">View all events</a>
+</div>
+<div>
+  <a href="<%=`/events/${event._id}/edit`%>">Edit Event Details</a>
+</div>
+<div>
+  <a
+    href="<%= `/events/${event._id}/delete?_method=DELETE` %>"
+    onclick="return confirm('Are you sure you want to delete this record?')"
+    >Delete</a
+  >
+</div>

@@ -1,0 +1,99 @@
+/* checks for api tokens and works the modal adds join button for attending events */
+$(document).ready(() => {
+  $("#modal-button").click(() => {
+    let apiToken = $("#apiToken").data("token");
+
+    $(".modal-body").html("");
+    $.get(`/api/events?apiToken=${apiToken}`, (results = {}) => {
+      let data = results.data;
+      if (!data || !data.events) return;
+      data.events.forEach((event) => {
+        $(".modal-body").append(
+          `<div>
+  <span class="event-title">
+  ${event.title}
+  </span>
+  <div class='event-description'>
+  ${event.description}
+  </div>
+  <button class='${event.joined ? "joined-button" : "join-button"}' data-id="${
+            event._id
+          }">${event.joined ? "Joined" : "Join"}</button>
+      </div>`
+        );
+      });
+    }).then(() => {
+      $(".join-button").click((event) => {
+        let $button = $(event.target),
+          eventId = $button.data("id");
+        $.get(
+          `/api/events/${eventId}/attend?apiToken=${apiToken}`,
+          (results = {}) => {
+            let data = results.data;
+            console.log(data);
+            console.log(data.success);
+            if (data && data.success) {
+              $button
+                .text("Joined")
+                .addClass("joined-button")
+                .removeClass("join-button");
+            } else {
+              $button.text("Try again");
+            }
+          }
+        );
+      });
+    });
+  });
+});
+
+/* js code for chat feature using socket.io */
+
+const socket = io();
+
+$("#chatForm").submit(() => {
+  let text = $("#chat-input").val(),
+    userId = $("#chat-user-id").val(),
+    userName = $("#chat-user-name").val();
+  socket.emit("message", { content: text, userId: userId, userName: userName });
+
+  $("#chat-input").val("");
+  return false;
+});
+socket.on("message", (message) => {
+  displayMessage(message);
+  for (let i = 0; i < 2; i++) {
+    $(".chat-icon").fadeOut(200).fadeIn(200);
+  }
+});
+
+socket.on("load all messages", (data) => {
+  data.forEach((message) => {
+    displayMessage(message);
+  });
+});
+
+//displays when the user disconnects
+socket.on("user disconnected", () => {
+  displayMessage({
+    userName: "Notice",
+    content: "user left the chat",
+  });
+});
+
+//function for displaying the message for the chat
+let displayMessage = (message) => {
+  $("#chat").prepend(
+    $("<li>").html(`${
+      message.name
+    } : <strong class="message ${getCurrentUserClass(message.user)}
+    ">
+    ${message.content}</strong>`)
+  );
+};
+
+//code for checking the class of the user and whether it is the current or other user
+let getCurrentUserClass = (id) => {
+  let userId = $("#chat-user-id").val();
+  return userId === id ? "current-user" : "other-user";
+};
